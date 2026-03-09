@@ -7,6 +7,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { suburbs } from "@/data/suburbs";
 import { Link } from "@tanstack/react-router";
 import {
   Award,
@@ -16,6 +17,7 @@ import {
   ChevronRight,
   Clock,
   Home,
+  MapPin,
   MessageCircle,
   Shield,
   Sparkles,
@@ -1018,6 +1020,61 @@ export default function HomePage() {
               ))}
             </Accordion>
           </div>
+        </div>
+      </section>
+
+      {/* ===== AREAS WE SERVE ===== */}
+      <section className="py-16 bg-teal-50" aria-labelledby="areas-heading">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-10">
+            <Badge className="mb-3 bg-teal-100 text-teal-800 border-0">
+              Service Areas
+            </Badge>
+            <h2
+              id="areas-heading"
+              className="font-display text-3xl sm:text-4xl font-bold text-teal-900 mb-4"
+            >
+              Vacate Cleaning Across All Adelaide Suburbs
+            </h2>
+            <p className="text-foreground/70 text-lg max-w-2xl mx-auto">
+              We clean rental properties in every corner of Adelaide. Click your
+              suburb for local pricing and availability.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
+            {suburbs.map((suburb, index) => (
+              <Link
+                key={suburb.slug}
+                to={`/suburbs/${suburb.slug}` as "/"}
+                data-ocid={`areas.suburb_link.${index + 1}`}
+              >
+                <div className="group flex flex-col items-center gap-2 bg-white rounded-xl p-4 border border-teal-100 hover:border-teal-400 hover:shadow-md transition-all duration-200 text-center h-full">
+                  <div className="w-9 h-9 rounded-lg bg-teal-100 group-hover:bg-teal-200 flex items-center justify-center transition-colors shrink-0">
+                    <MapPin className="w-4 h-4 text-teal-700" />
+                  </div>
+                  <div>
+                    <div className="font-semibold text-teal-900 text-sm leading-tight">
+                      {suburb.name}
+                    </div>
+                    <div className="text-xs text-muted-foreground mt-0.5">
+                      {suburb.postcode}
+                    </div>
+                  </div>
+                  <ChevronRight className="w-3 h-3 text-teal-400 group-hover:text-teal-600 mt-auto transition-colors" />
+                </div>
+              </Link>
+            ))}
+          </div>
+          <p className="text-center text-sm text-muted-foreground mt-6">
+            Don't see your suburb?{" "}
+            <Link
+              to="/contact"
+              className="text-teal-600 hover:underline font-medium"
+            >
+              Contact us
+            </Link>{" "}
+            — we cover all Adelaide suburbs and surrounding areas.
+          </p>
         </div>
       </section>
 
