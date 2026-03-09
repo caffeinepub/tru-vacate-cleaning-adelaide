@@ -1,0 +1,219 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   FONTS — self-hosted from /assets/fonts/
+   ========================================================= */
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque-Variable.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans-Variable.woff2") format("woff2");
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================================================
+   DESIGN TOKENS — Tru Vacate Cleaning Adelaide
+   Palette: Deep Teal primary, Off-white, Warm slate, Amber accent
+   ========================================================= */
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Core palette */
+    --background: 0.98 0 0;
+    --foreground: 0.15 0.02 220;
+
+    /* Cards & surfaces */
+    --card: 1 0 0;
+    --card-foreground: 0.15 0.02 220;
+    --popover: 1 0 0;
+    --popover-foreground: 0.15 0.02 220;
+
+    /* Primary — Deep Teal */
+    --primary: 0.52 0.14 185;
+    --primary-foreground: 0.99 0 0;
+
+    /* Secondary — Light teal wash */
+    --secondary: 0.93 0.04 185;
+    --secondary-foreground: 0.25 0.08 185;
+
+    /* Muted */
+    --muted: 0.95 0.01 220;
+    --muted-foreground: 0.5 0.02 220;
+
+    /* Accent — Amber gold */
+    --accent: 0.82 0.16 75;
+    --accent-foreground: 0.12 0.04 40;
+
+    /* Destructive */
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    /* Borders & inputs */
+    --border: 0.88 0.02 220;
+    --input: 0.88 0.02 220;
+    --ring: 0.52 0.14 185;
+
+    /* Teal shades */
+    --teal-50: 0.97 0.04 185;
+    --teal-100: 0.93 0.07 185;
+    --teal-200: 0.86 0.1 185;
+    --teal-500: 0.62 0.16 185;
+    --teal-600: 0.52 0.14 185;
+    --teal-700: 0.42 0.12 185;
+    --teal-800: 0.32 0.09 185;
+    --teal-900: 0.22 0.06 185;
+
+    /* Charts */
+    --chart-1: 0.52 0.14 185;
+    --chart-2: 0.82 0.16 75;
+    --chart-3: 0.398 0.07 227;
+    --chart-4: 0.828 0.189 84;
+    --chart-5: 0.769 0.188 70;
+
+    /* Sidebar */
+    --sidebar: 0.22 0.06 185;
+    --sidebar-foreground: 0.97 0 0;
+    --sidebar-primary: 0.82 0.16 75;
+    --sidebar-primary-foreground: 0.12 0.04 40;
+    --sidebar-accent: 0.32 0.09 185;
+    --sidebar-accent-foreground: 0.97 0 0;
+    --sidebar-border: 0.32 0.09 185;
+    --sidebar-ring: 0.62 0.16 185;
+  }
+
+  .dark {
+    --background: 0.14 0.03 220;
+    --foreground: 0.96 0.01 185;
+    --card: 0.18 0.03 220;
+    --card-foreground: 0.96 0.01 185;
+    --popover: 0.2 0.04 220;
+    --popover-foreground: 0.96 0.01 185;
+    --primary: 0.65 0.15 185;
+    --primary-foreground: 0.1 0.03 220;
+    --secondary: 0.24 0.05 220;
+    --secondary-foreground: 0.85 0.04 185;
+    --muted: 0.22 0.03 220;
+    --muted-foreground: 0.6 0.05 185;
+    --accent: 0.78 0.18 75;
+    --accent-foreground: 0.12 0.04 40;
+    --destructive: 0.704 0.191 22.216;
+    --destructive-foreground: 0.205 0 0;
+    --border: 1 0 0 / 12%;
+    --input: 1 0 0 / 15%;
+    --ring: 0.65 0.15 185;
+    --sidebar: 0.12 0.03 220;
+    --sidebar-foreground: 0.96 0.01 185;
+    --sidebar-primary: 0.78 0.18 75;
+    --sidebar-primary-foreground: 0.12 0.04 40;
+    --sidebar-accent: 0.2 0.04 220;
+    --sidebar-accent-foreground: 0.96 0.01 185;
+    --sidebar-border: 1 0 0 / 10%;
+    --sidebar-ring: 0.65 0.15 185;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "General Sans", "Cabinet Grotesk", ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: "Bricolage Grotesque", "Cabinet Grotesk", ui-sans-serif, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* =========================================================
+   UTILITY CLASSES
+   ========================================================= */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gradient-teal {
+    background: linear-gradient(135deg, oklch(0.52 0.14 185), oklch(0.42 0.12 185));
+  }
+
+  .gradient-teal-light {
+    background: linear-gradient(135deg, oklch(0.93 0.07 185), oklch(0.97 0.04 185));
+  }
+
+  .gradient-hero {
+    background: linear-gradient(
+      160deg,
+      oklch(0.22 0.06 185) 0%,
+      oklch(0.32 0.09 185) 50%,
+      oklch(0.42 0.12 185) 100%
+    );
+  }
+
+  .text-teal {
+    color: oklch(var(--primary));
+  }
+
+  .bg-teal {
+    background-color: oklch(var(--primary));
+  }
+
+  .shadow-teal {
+    box-shadow: 0 4px 24px oklch(0.52 0.14 185 / 30%);
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  /* WhatsApp green */
+  .bg-whatsapp {
+    background-color: #25D366;
+  }
+  .hover\:bg-whatsapp-dark:hover {
+    background-color: #128C7E;
+  }
+}
+
+/* =========================================================
+   SMOOTH SCROLL
+   ========================================================= */
+html {
+  scroll-behavior: smooth;
+}
+
+/* =========================================================
+   ACCORDION ANIMATION
+   ========================================================= */
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
